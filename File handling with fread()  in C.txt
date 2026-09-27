@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    FILE *file;
+    int buffer[5];
+
+    // Open the binary file for reading
+    file = fopen("input.bin", "rb");
+    if (file == NULL) {
+        perror("Error opening file");
+        return 1;
+    }
+
+    // Read the integers from the file into the buffer
+    fread(buffer, sizeof(int),5, file);
+
+    // Print the integers that were read
+    for (int i = 0; i < 5; i++) {
+        printf("Element %d: %d\n", i + 1, buffer[i]);
+    }
+
+    // Close the file
+    fclose(file);
+    return 0;
+}
